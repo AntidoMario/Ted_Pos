@@ -1,0 +1,1788 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+
+* {
+	font-family: 'Open Sans', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--grey: #F1F0F6;
+	--dark-grey: #8D8D8D;
+	--light: #fff;
+	--dark: #000;
+	--green: #81D43A;
+	--light-green: #E3FFCB;
+	--blue: #1775F1;
+	--light-blue: #D0E4FF;
+	--dark-blue: #0C5FCD;
+	--red: #FC3B56;
+}
+
+html {
+	overflow-x: hidden;
+}
+
+body {
+	background: var(--grey);
+	overflow-x: hidden;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+
+
+
+
+
+
+/* SIDEBAR */
+#sidebar {
+	position: fixed;
+	max-width: 260px;
+	width: 100%;
+	background: var(--light);
+	top: 0;
+	left: 0;
+	height: 100%;
+	overflow-y: auto;
+	scrollbar-width: none;
+	transition: all .3s ease;
+	z-index: 200;
+}
+#sidebar.hide {
+	max-width: 60px;
+}
+#sidebar.hide:hover {
+	max-width: 260px;
+}
+#sidebar::-webkit-scrollbar {
+	display: none;
+}
+#sidebar .brand {
+	font-size: 15px;
+	display: flex;
+	align-items: center;
+	height: 64px;
+	font-weight: 700;
+	color: var(--blue);
+	position: sticky;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	background: var(--light);
+	transition: all .3s ease;
+	padding: 0 6px;
+}
+#sidebar .icon {
+	min-width: 48px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 6px;
+}
+#sidebar .icon-right {
+	margin-left: auto;
+	transition: all .3s ease;
+}
+#sidebar .side-menu {
+	margin: 36px 0;
+	padding: 0 20px;
+	transition: all .3s ease;
+}
+#sidebar.hide .side-menu {
+	padding: 0 6px;
+}
+#sidebar.hide:hover .side-menu {
+	padding: 0 20px;
+}
+#sidebar .side-menu a {
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+	color: var(--dark);
+	padding: 12px 16px 12px 0;
+	transition: all .3s ease;
+	border-radius: 10px;
+	margin: 4px 0;
+	white-space: nowrap;
+}
+#sidebar .side-menu > li > a:hover {
+	background: var(--grey);
+}
+#sidebar .side-menu > li > a.active .icon-right {
+	transform: rotateZ(90deg);
+}
+#sidebar .side-menu > li > a.active,
+#sidebar .side-menu > li > a.active:hover {
+	background: var(--blue);
+	color: var(--light);
+}
+#sidebar .divider {
+	margin-top: 24px;
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: var(--dark-grey);
+	transition: all .3s ease;
+	white-space: nowrap;
+}
+#sidebar.hide:hover .divider {
+	text-align: left;
+}
+#sidebar.hide .divider {
+	text-align: center;
+}
+#sidebar .side-dropdown {
+	padding-left: 54px;
+	max-height: 0;
+	overflow-y: hidden;
+	transition: all .15s ease;
+}
+#sidebar .side-dropdown.show {
+	max-height: 1000px;
+}
+#sidebar .side-dropdown a:hover {
+	color: var(--blue);
+}
+#sidebar .ads {
+	width: 100%;
+	padding: 20px;
+}
+#sidebar.hide .ads {
+	display: none;
+}
+#sidebar.hide:hover .ads {
+	display: block;
+}
+#sidebar .ads .wrapper {
+	background: var(--grey);
+	padding: 20px;
+	border-radius: 10px;
+}
+#sidebar .btn-upgrade {
+	font-size: 14px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 12px 0;
+	color: var(--light);
+	background: var(--blue);
+	transition: all .3s ease;
+	border-radius: 5px;
+	font-weight: 600;
+	margin-bottom: 12px;
+}
+#sidebar .btn-upgrade:hover {
+	background: var(--dark-blue);
+}
+#sidebar .ads .wrapper p {
+	font-size: 12px;
+	color: var(--dark-grey);
+	text-align: center;
+}
+#sidebar .ads .wrapper p span {
+	font-weight: 700;
+}
+/* SIDEBAR */
+
+
+
+
+
+/* CONTENT */
+#content {
+	position: relative;
+	width: calc(100% - 260px);
+	left: 260px;
+	transition: all .3s ease;
+}
+#sidebar.hide + #content {
+	width: calc(100% - 60px);
+	left: 60px;
+}
+/* NAVBAR */
+nav {
+	background: var(--light);
+	height: 64px;
+	padding: 0 20px;
+	display: flex;
+	align-items: center;
+	grid-gap: 28px;
+	position: sticky;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+nav .toggle-sidebar {
+	font-size: 18px;
+	cursor: pointer;
+}
+nav form {
+	max-width: 400px;
+	width: 100%;
+	margin-right: auto;
+}
+nav .form-group {
+	position: relative;
+}
+nav .form-group input {
+	width: 100%;
+	background: var(--grey);
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	padding: 10px 36px 10px 16px;
+	transition: all .3s ease;
+}
+nav .form-group input:focus {
+	box-shadow: 0 0 0 1px var(--blue), 0 0 0 4px var(--light-blue);
+}
+nav .form-group .icon {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 16px;
+	color: var(--dark-grey);
+}
+nav .nav-link {
+	position: relative;
+}
+nav .nav-link .icon {
+	font-size: 18px;
+	color: var(--dark);
+}
+nav .nav-link .badge {
+	position: absolute;
+	top: -12px;
+	right: -12px;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 2px solid var(--light);
+	background: var(--red);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--light);
+	font-size: 10px;
+	font-weight: 700;
+}
+nav .divider {
+	width: 1px;
+	background: var(--grey);
+	height: 12px;
+	display: block;
+}
+nav .profile {
+	position: relative;
+}
+nav .profile img {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	object-fit: cover;
+	cursor: pointer;
+}
+nav .profile .profile-link {
+	position: absolute;
+	top: calc(100% + 10px);
+	right: 0;
+	background: var(--light);
+	padding: 10px 0;
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
+	border-radius: 10px;
+	width: 160px;
+	opacity: 0;
+	pointer-events: none;
+	transition: all .3s ease;
+}
+nav .profile .profile-link.show {
+	opacity: 1;
+	pointer-events: visible;
+	top: 100%;
+}
+nav .profile .profile-link a {
+	padding: 10px 16px;
+	display: flex;
+	grid-gap: 10px;
+	font-size: 14px;
+	color: var(--dark);
+	align-items: center;
+	transition: all .3s ease;
+}
+nav .profile .profile-link a:hover {
+	background: var(--grey);
+}
+/* NAVBAR */
+
+
+
+/* MAIN */
+main {
+	width: 100%;
+	padding: 24px 20px 20px 20px;
+}
+main .title {
+	font-size: 28px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+main .breadcrumbs {
+	display: flex;
+	grid-gap: 6px;
+}
+main .breadcrumbs li,
+main .breadcrumbs li a {
+	font-size: 14px;
+}
+main .breadcrumbs li a {
+	color: var(--blue);
+}
+main .breadcrumbs li a.active,
+main .breadcrumbs li.divider {
+	color: var(--dark-grey);
+	pointer-events: none;
+}
+main .info-data {
+	margin-top: 36px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	grid-gap: 20px;
+}
+main .info-data .card {
+	padding: 20px;
+	border-radius: 10px;
+	background: var(--light);
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, .05);
+}
+main .card .head {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+main .card .head h2 {
+	font-size: 24px;
+	font-weight: 600;
+}
+main .card .head p {
+	font-size: 14px;
+}
+main .card .head .icon {
+	font-size: 20px;
+	color: var(--green);
+}
+main .card .head .icon.down {
+	color: var(--red);
+}
+main .card .progress {
+	display: block;
+	margin-top: 24px;
+	height: 10px;
+	width: 100%;
+	border-radius: 10px;
+	background: var(--grey);
+	overflow-y: hidden;
+	position: relative;
+	margin-bottom: 4px;
+}
+main .card .progress::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background: var(--blue);
+	width: var(--value);
+}
+main .card .label {
+	font-size: 14px;
+	font-weight: 700;
+}
+main .data {
+	display: flex;
+	grid-gap: 20px;
+	margin-top: 20px;
+	flex-wrap: wrap;
+}
+main .data .content-data {
+	flex-grow: 1;
+	flex-basis: 400px;
+	padding: 20px;
+	background: var(--light);
+	border-radius: 10px;
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
+}
+main .content-data .head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 24px;
+}
+main .content-data .head h3 {
+	font-size: 20px;
+	font-weight: 600;
+}
+main .content-data .head .menu {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+main .content-data .head .menu .icon {
+	cursor: pointer;
+}
+main .content-data .head .menu-link {
+	position: absolute;
+	top: calc(100% + 10px);
+	right: 0;
+	width: 140px;
+	background: var(--light);
+	border-radius: 10px;
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
+	padding: 10px 0;
+	z-index: 100;
+	opacity: 0;
+	pointer-events: none;
+	transition: all .3s ease;
+}
+main .content-data .head .menu-link.show {
+	top: 100%;
+	opacity: 1;
+	pointer-events: visible;
+}
+main .content-data .head .menu-link a {
+	display: block;
+	padding: 6px 16px;
+	font-size: 14px;
+	color: var(--dark);
+	transition: all .3s ease;
+}
+main .content-data .head .menu-link a:hover {
+	background: var(--grey);
+}
+main .content-data .chart {
+	width: 100%;
+	max-width: 100%;
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+main .content-data .chart::-webkit-scrollbar {
+	display: none;
+}
+
+main .chat-box {
+	width: 100%;
+	max-height: 360px;
+	overflow-y: auto;
+	scrollbar-width: none;
+}
+main .chat-box::-webkit-scrollbar {
+	display: none;
+}
+main .chat-box .day {
+	text-align: center;
+	margin-bottom: 10px;
+}
+main .chat-box .day span {
+	display: inline-block;
+	padding: 6px 12px;
+	border-radius: 20px;
+	background: var(--light-blue);
+	color: var(--blue);
+	font-size: 12px;
+	font-weight: 600;
+}
+main .chat-box .msg img {
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+main .chat-box .msg {
+	display: flex;
+	grid-gap: 6px;
+	align-items: flex-start;
+}
+main .chat-box .profile .username {
+	font-size: 14px;
+	font-weight: 600;
+	display: inline-block;
+	margin-right: 6px;
+}
+main .chat-box .profile .time {
+	font-size: 12px;
+	color: var(--dark-grey);
+}
+main .chat-box .chat p {
+	font-size: 14px;
+	padding: 6px 10px;
+	display: inline-block;
+	max-width: 400px;
+	line-height: 150%;
+}
+main .chat-box .msg:not(.me) .chat p {
+	border-radius: 0 5px 5px 5px;
+	background: var(--blue);
+	color: var(--light);
+}
+main .chat-box .msg.me {
+	justify-content: flex-end;
+}
+main .chat-box .msg.me .profile {
+	text-align: right;
+}
+main .chat-box .msg.me p {
+	background: var(--grey);
+	border-radius: 5px 0 5px 5px;
+}
+main form {
+	margin-top: 6px;
+}
+main .form-group {
+	width: 100%;
+	display: flex;
+	grid-gap: 10px;
+}
+main .form-group input {
+	flex-grow: 1;
+	padding: 10px 16px;
+	border-radius: 5px;
+	outline: none;
+	background: var(--grey);
+	border: none;
+	transition: all .3s ease;
+	width: 100%;
+}
+main .form-group input:focus {
+	box-shadow: 0 0 0 1px var(--blue), 0 0 0 4px var(--light-blue);
+}
+main .btn-send {
+	padding: 0 16px;
+	background: var(--blue);
+	border-radius: 5px;
+	color: var(--light);
+	cursor: pointer;
+	border: none;
+	transition: all .3s ease;
+}
+main .btn-send:hover {
+	background: var(--dark-blue);
+}
+/* MAIN */
+/* CONTENT */
+
+
+/*Table CSS sa OrdersList Mao ni diri sa table CSS*/
+/* General Table Styling */
+.orders-table {
+	width: 100%;
+	max-width: 1000px;
+	margin: 20px auto;
+	background-color: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+  }
+  
+  .orders-table h3 {
+	text-align: center;
+	padding: 20px;
+	color: #444;
+	font-size: 28px;
+	font-weight: 600;
+	margin-bottom: 0;
+	border-bottom: 1px solid #e0e0e0;
+	background-color: #f8f8f8;
+  }
+  
+  /* Table Controls (Show Entries and Search) */
+  .table-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Align vertically */
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.table-controls label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #444;
+}
+
+.table-controls select,
+.table-controls input[type="text"] {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+    margin-left: 8px;
+}
+
+.table-controls select:hover,
+.table-controls input[type="text"]:hover {
+    border-color: #4CAF50;
+}
+
+.table-controls input[type="text"] {
+    width: 250px;
+}
+
+  
+  /* Table Structure */
+  table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 0;
+  }
+  
+  thead {
+	background-color: #f0f0f0;
+  }
+  
+  th, td {
+	padding: 16px;
+	text-align: left;
+	color: #444;
+	font-size: 16px;
+	border-bottom: 1px solid #e0e0e0;
+  }
+  
+  th {
+	font-weight: 600;
+	text-transform: uppercase;
+	background-color: #f7f7f7;
+  }
+  
+  tbody tr:nth-child(even) {
+	background-color: #fafafa;
+  }
+  
+  tbody tr:hover {
+	background-color: #f2f2f2;
+	transition: background-color 0.3s ease;
+  }
+  
+  /* Pagination Styling */
+  .pagination {
+	display: flex;
+	justify-content: center;
+	padding: 20px 0;
+	background-color: #f8f8f8;
+  }
+  
+  .pagination span {
+	margin: 0 8px;
+	padding: 10px 16px;
+	background-color: #1775F1;
+	color: white;
+	border-radius: 6px;
+	cursor: pointer;
+	font-weight: 500;
+	transition: background-color 0.3s ease;
+  }
+  
+  .pagination span:hover {
+	background-color: #3589f8cb;
+  }
+  
+  /* Action Buttons Styling */
+  a.edit, a.delete {
+	display: inline-block;
+	margin-right: 10px;
+	font-size: 18px;
+	padding: 8px;
+	border-radius: 4px;
+	transition: all 0.3s ease;
+  }
+  
+  a.edit {
+	color: #4CAF50;
+	border: 1px solid #4CAF50;
+  }
+  
+  a.delete {
+	color: #f44336;
+	border: 1px solid #f44336;
+  }
+  
+  a.edit:hover {
+	background-color: #4CAF50;
+	color: white;
+  }
+  
+  a.delete:hover {
+	background-color: #f44336;
+	color: white;
+  }
+  /*Diri ra taman Ang css sa order listTable*/
+
+
+
+
+
+
+/*Css Para sa takeorders*/
+/* General Styling */
+body {
+	font-family: 'Arial', sans-serif;
+	background-color: #f5f7fa;
+	margin: 0;
+	padding: 0;
+	line-height: 1.6;
+}
+
+/* Container */
+.order-container {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+	gap: 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+/* Order List Section */
+.order-list {
+	width: 40%;
+	background-color: #fff;
+	border-radius: 12px;
+	padding: 20px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.order-header h3 {
+	font-size: 22px;
+	font-weight: 700;
+	color: #333;
+}
+
+.home-btn {
+	padding: 8px 16px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 14px;
+	transition: background-color 0.3s ease;
+}
+
+.home-btn:hover {
+	background-color: #0056b3;
+}
+
+.order-input {
+	margin-bottom: 15px;
+}
+
+.order-input label {
+	font-size: 15px;
+	font-weight: bold;
+	color: #555;
+}
+
+.order-input input {
+	padding: 10px 12px;
+	width: 100%;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	font-size: 15px;
+	margin-top: 8px;
+	transition: border 0.3s ease;
+}
+
+.order-input input:focus {
+	border: 1px solid #007bff;
+}
+
+.order-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 15px;
+}
+
+.order-table th, .order-table td {
+	padding: 12px;
+	text-align: center;
+	border-bottom: 1px solid #eee;
+}
+
+.order-table th {
+	font-weight: 600;
+	color: #333;
+	background-color: #f9f9f9;
+}
+
+.order-table td {
+	font-size: 15px;
+	color: #555;
+}
+
+.quantity-btn {
+	background-color: #007bff;
+	color: white;
+	border: none;
+	padding: 6px 10px;
+	border-radius: 6px;
+	cursor: pointer;
+	margin: 0 5px;
+	font-size: 14px;
+}
+
+.quantity-btn:hover {
+	background-color: #0056b3;
+}
+
+.order-total {
+	margin-top: 20px;
+	font-size: 17px;
+	text-align: right;
+}
+
+.order-total strong {
+	color: #333;
+}
+
+.order-total span {
+	font-weight: bold;
+	color: #007bff;
+}
+
+/* Product Section */
+.product-section {
+	width: 55%;
+	background-color: #fff;
+	border-radius: 12px;
+	padding: 20px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-section h3 {
+	font-size: 22px;
+	font-weight: 700;
+	color: #333;
+	margin-bottom: 20px;
+}
+
+.categories {
+	display: flex;
+	gap: 20px;
+	margin-bottom: 25px;
+}
+
+.category-list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.category-btn {
+	padding: 10px 16px;
+	background-color: #f9f9f9;
+	color: #555;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 15px;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.category-btn:hover, .category-btn.active {
+	background-color: #007bff;
+	color: white;
+}
+
+.product-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.product-btn {
+	width: 30%;
+	padding: 12px;
+	background-color: #f9f9f9;
+	color: #555;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 15px;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.product-btn:hover {
+	background-color: #007bff;
+	color: white;
+}
+
+/* Action Buttons */
+.action-buttons {
+	margin-top: 25px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.pay-btn, .cancel-btn {
+	padding: 10px 20px;
+	background-color: #28a745;
+	color: white;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 15px;
+	transition: background-color 0.3s ease;
+}
+
+.cancel-btn {
+	background-color: #dc3545;
+}
+
+.pay-btn:hover {
+	background-color: #218838;
+}
+
+.cancel-btn:hover {
+	background-color: #c82333;
+}
+/*Diri ra taman ang TakeOrders*/
+
+
+
+/* Modal styles */
+/*Diri Ang CSS sa Pop Up nga modal*/
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed;
+	z-index: 999; /* Ensures the modal stays on top */
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6); /* Darker semi-transparent overlay */
+  }
+  
+  /* Center the modal content */
+  .modal-content {
+	background-color: #ffffff;
+	margin: 2% auto; /* Reduced margin to move the modal higher */
+	padding: 40px 30px; /* More padding for modern feel */
+	width: 400px; /* Fixed width for better layout */
+	max-width: 90%; /* Responsive on smaller screens */
+	border-radius: 12px; /* Softer rounded corners */
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+	text-align: left; /* Align content to left */
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+  }
+  
+  /* Heading style */
+  .modal-content h3 {
+	margin-bottom: 20px;
+	font-size: 22px;
+	font-weight: bold;
+	color: #333;
+  }
+  
+  /* Input fields styling */
+  .modal-content input {
+	width: 100%; /* Full width */
+	padding: 12px;
+	margin: 15px 0;
+	border-radius: 8px; /* More rounded for modern look */
+	border: 1px solid #ddd;
+	background-color: #f9f9f9;
+	font-size: 16px;
+	color: #555;
+	transition: border 0.2s;
+  }
+  
+  .modal-content input:focus {
+	outline: none;
+	border: 1px solid #7a8dfb; /* Light blue border on focus */
+  }
+  
+  /* Buttons styling */
+  .modal-content button {
+	padding: 12px 20px;
+	margin-top: 15px;
+	border: none;
+	font-size: 16px;
+	font-weight: 500;
+	cursor: pointer;
+	border-radius: 8px;
+	width: 100%; /* Full width for modern look */
+	transition: background-color 0.3s ease;
+  }
+  
+  .modal-content button.pay-btn {
+	background-color: #4CAF50; /* Green color for action button */
+	color: white;
+  }
+  
+  .modal-content button.pay-btn:hover {
+	background-color: #43a047; /* Darker green on hover */
+  }
+  
+  .modal-content button.cancel-btn {
+	background-color: #f44336; /* Red for cancel button */
+	color: white;
+  }
+  
+  .modal-content button.cancel-btn:hover {
+	background-color: #d32f2f; /* Darker red on hover */
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 600px) {
+	.modal-content {
+	  width: 90%; /* For smaller screens */
+	}
+  } /*CSS Modal ends here*/
+
+
+
+
+  /*CSS sa categories ni ah*/
+ /* Main container that holds the entire form and list sections side by side */
+.container {
+	display: flex; /* Flexbox layout for responsive positioning */
+	justify-content: space-between; /* Space between form and list */
+	gap: 20px; /* Spacing between the two sections */
+	padding: 20px; /* Padding around the container */
+	flex-wrap: wrap; /* Ensure layout wraps on smaller screens */
+}
+
+/* Container for category form and list sections */
+.category-section {
+	display: flex; /* Flexbox layout for splitting form and list */
+	gap: 40px; /* Space between form and list sections */
+	width: 100%; /* Full width of the container */
+	flex-wrap: wrap; /* Wrap on smaller screens */
+}
+
+/* Styles for the category form (left side) */
+.category-form {
+	flex: 1; /* Takes equal space alongside category list */
+	background-color: #f9fafb; /* Light background for modern look */
+	padding: 24px; /* Inner padding around form elements */
+	border-radius: 12px; /* Smooth rounded corners */
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05); /* Softer shadow for depth */
+	border: 1px solid #e5e7eb; /* Subtle border */
+}
+
+/* Styles for the category list (right side) */
+.category-list {
+	flex: 1; /* Takes equal space alongside category form */
+	background-color: #f9fafb; /* Light background for list */
+	padding: 24px; /* Inner padding around list elements */
+	border-radius: 12px; /* Smooth rounded corners */
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05); /* Softer shadow for depth */
+	border: 1px solid #e5e7eb; /* Subtle border */
+}
+
+/* Heading styles for both form and list sections */
+.category-form h3,
+.category-list h3 {
+	margin-bottom: 16px; /* Space below heading */
+	font-size: 1.75rem; /* Modern, larger font size */
+	color: #111827; /* Darker heading color */
+	font-weight: 600; /* Semi-bold for better readability */
+}
+
+/* Form structure, makes it vertical with gaps between elements */
+form {
+	display: flex; /* Flexbox layout */
+	flex-direction: column; /* Vertical column layout */
+	gap: 16px; /* Space between form fields */
+}
+
+/* Label styling for form inputs */
+label {
+	font-weight: 500; /* Slightly bold labels */
+	font-size: 1rem; /* Modern font size */
+	color: #374151; /* Darker label color */
+	margin-bottom: 6px; /* Space below the label */
+}
+
+/* General styling for all input fields and textareas */
+input,
+textarea,
+select {
+	padding: 12px; /* Increase padding for better UI */
+	border: 1px solid #d1d5db; /* Lighter gray border */
+	border-radius: 6px; /* Smooth rounding of corners */
+	width: 100%; /* Full width of container */
+	font-size: 1rem; /* Modern font size */
+	color: #111827; /* Darker text color */
+	background-color: #fff; /* White background */
+	transition: border-color 0.3s ease; /* Smooth transition on hover */
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+	border-color: #2563eb; /* Blue border on focus */
+	outline: none; /* Remove default outline */
+}
+
+/* Button container to align buttons side by side */
+.form-buttons {
+	display: flex; /* Flexbox layout for button alignment */
+	justify-content: flex-end; /* Align buttons to the right */
+	gap: 10px; /* Space between buttons */
+	margin-top: 20px; /* Space above buttons */
+}
+
+/* General button styling */
+.btn {
+	padding: 10px 24px; /* Padding inside buttons */
+	border: none; /* No border around buttons */
+	border-radius: 6px; /* Smooth, modern rounded button corners */
+	cursor: pointer; /* Pointer cursor on hover */
+	font-size: 1rem; /* Modern button font size */
+	transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Save button (green) styling */
+.btn-save {
+	background-color: #22c55e; /* Modern green background */
+	color: #fff; /* White text */
+}
+
+.btn-save:hover {
+	background-color: #16a34a; /* Darker green on hover */
+	box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2); /* Subtle shadow on hover */
+}
+
+/* Cancel button (red) styling */
+.btn-cancel {
+	background-color: #f87171; /* Modern red background */
+	color: #fff; /* White text */
+}
+
+.btn-cancel:hover {
+	background-color: #ef4444; /* Darker red on hover */
+	box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2); /* Subtle shadow on hover */
+}
+
+/* Container for list options (entries dropdown and search input) */
+.list-options {
+	display: flex; /* Flexbox layout for aligning elements */
+	align-items: center; /* Vertically center the elements */
+	gap: 10px; /* Space between dropdown, entries label, and search */
+	margin-bottom: 20px; /* Space below list options */
+}
+
+/* Styling for the search input box */
+.search-input {
+	padding: 10px; /* Inner padding */
+	border: 1px solid #d1d5db; /* Lighter gray border */
+	border-radius: 6px; /* Rounded corners */
+	width: 250px; /* Increased width for better usability */
+	font-size: 1rem; /* Modern font size */
+	color: #111827; /* Darker text color */
+}
+
+.search-input:focus {
+	border-color: #2563eb; /* Blue border on focus */
+	outline: none; /* Remove default outline */
+}
+
+/* Table styling for category list */
+.table {
+	width: 100%; /* Full width table */
+	border-collapse: collapse; /* Remove gaps between cells */
+}
+
+/* Table header and cell styling */
+.table th,
+.table td {
+	padding: 14px; /* Increased padding for better readability */
+	text-align: left; /* Align text to the left */
+	border-bottom: 1px solid #e5e7eb; /* Light border below rows */
+	font-size: 1rem; /* Modern font size */
+	color: #374151; /* Darker text color */
+}
+
+/* Table row hover effect */
+.table tr:hover {
+	background-color: #f3f4f6; /* Light background on hover */
+}
+
+/* General button icon styling */
+.btn-icon {
+	background: none; /* No background */
+	border: none; /* No border */
+	cursor: pointer; /* Pointer cursor on hover */
+	padding: 6px; /* Small padding */
+	font-size: 1.4rem; /* Slightly larger icon size */
+	transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Edit button (icon) */
+.btn-edit i {
+	color: #22c55e; /* Modern green icon for edit */
+}
+
+.btn-edit:hover i {
+	color: #16a34a; /* Darker green on hover */
+}
+
+/* Delete button (icon) */
+.btn-delete i {
+	color: #f87171; /* Modern red icon for delete */
+}
+
+.btn-delete:hover i {
+	color: #ef4444; /* Darker red on hover */
+}
+  /*Categories CSS ends here*/
+  
+  
+
+
+
+/*user CSS*/
+.container {
+	padding: 20px;
+	background-color: #ffffff;
+	max-width: 1200px;
+	margin: 20px auto;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	padding: 10px;
+	border-bottom: 2px solid #e0e0e0;
+}
+
+.new-user-btn {
+	padding: 10px 20px;
+	background-color: #2563eb; /* Blue color */
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	margin-left: 20px; /* Added margin for spacing */
+}
+
+.new-user-btn:hover {
+	background-color: #3b82f6; /* Lighter blue on hover */
+}
+
+/* Table Controls - Flexbox Alignment Fix */
+.table-controls {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 15px;
+	padding: 10px 0;
+	border-bottom: 2px solid #e0e0e0;
+}
+
+/* Flexbox containers for the "Show" and "Search" sections */
+.show-entries,
+.search-box {
+	display: flex;
+	align-items: center;
+	gap: 10px; /* Adjusted spacing between label and input */
+	margin-bottom: 0; /* Reset margin */
+}
+
+.show-entries label,
+.search-box label {
+	font-weight: bold;
+	margin-right: 5px; /* Small margin between label and input */
+}
+
+.entries-select, 
+.search-input {
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.entries-select {
+	width: 70px;
+}
+
+.search-input {
+	width: 250px;
+}
+
+/* Improved spacing between "Show entries" and "Search" */
+.table-controls .show-entries {
+	margin-right: auto; /* Align to the left */
+}
+
+.table-controls .search-box {
+	margin-left: 20px; /* Added spacing to push away from "Show" */
+}
+
+/* User Table */
+.user-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 10px;
+}
+
+.user-table th,
+.user-table td {
+	padding: 12px 15px;
+	border: 1px solid #ddd;
+	text-align: left;
+}
+
+.user-table th {
+	background-color: #f5f5f5;
+	font-weight: bold;
+}
+
+.user-table tbody tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+.user-table tbody tr:hover {
+	background-color: #f1f1f1;
+}
+
+.user-table tbody td {
+	text-align: center;
+}
+
+/* Action Buttons Styling */
+.edit-btn,
+.delete-btn {
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: 18px;
+	margin-right: 5px;
+}
+
+.edit-btn i {
+	color: #4caf50; /* Green for edit */
+	transition: color 0.3s;
+}
+
+.delete-btn i {
+	color: #e71a1a; /* Red for delete */
+	transition: color 0.3s;
+}
+
+.edit-btn i:hover {
+	color: #388e3c; /* Darker green on hover */
+}
+
+.delete-btn i:hover {
+	color: #d32f2f; /* Darker red on hover */
+}
+
+/* Pagination */
+.pagination {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.pagination-btn {
+	background-color: #2563eb; /* Blue for pagination */
+	color: white;
+	padding: 8px 16px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 0 5px;
+	transition: background-color 0.3s;
+}
+
+.pagination-btn:hover {
+	background-color: #3b82f6; /* Lighter blue on hover */
+}
+
+.page-number {
+	width: 50px;
+	padding: 8px;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+/* General Styling Fixes */
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f9;
+	color: #333;
+}
+
+h2 {
+	margin: 0;
+	font-size: 24px;
+}
+
+label {
+	font-weight: normal;
+	font-size: 14px;
+}
+
+input[type="text"],
+select {
+	font-size: 14px;
+}
+
+/* Responsive behavior for smaller screens */
+@media (max-width: 768px) {
+	.container {
+		width: 90%;
+	}
+
+	.table-controls {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.show-entries,
+	.search-box {
+		width: 100%;
+		justify-content: space-between;
+		margin-bottom: 10px; /* Adds space between the two in small screens */
+	}
+
+	.table-controls .search-box {
+		margin-left: 0; /* Remove extra margin on small screens */
+	}
+} /*Dri rataman sa CSS user*/
+
+
+
+/*CSS sa ADD product
+/* Main Section Styling */
+.product-list-section {
+	margin: 20px;
+  }
+  
+  .table-container {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .table-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+  }
+  
+  .table-header h2 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #333;
+  }
+  
+  .btn-add-product {
+	background-color: #2563eb;
+	color: #fff;
+	border: none;
+	padding: 10px 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 1rem;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+  }
+  
+  .btn-add-product:hover {
+	background-color: #3b82f6;
+  }
+  
+  .table-controls {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+  }
+  
+  .table-controls select {
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+  }
+  
+  .search-box {
+	position: relative;
+  }
+  
+  .search-box input {
+	padding: 8px 35px 8px 10px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	width: 200px;
+  }
+  
+  .search-box i {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #333;
+  }
+  
+  .product-table {
+	width: 100%;
+	border-collapse: collapse;
+  }
+  
+  .product-table th,
+  .product-table td {
+	padding: 10px;
+	text-align: left;
+	border: 1px solid #ddd;
+  }
+  
+  .product-table th {
+	background-color: #f4f4f4;
+	color: #333;
+	font-weight: 600;
+  }
+  
+  .product-table tbody tr:hover {
+	background-color: #f1f1f1;
+  }
+  
+  .product-table tbody tr td i {
+	cursor: pointer;
+	margin-right: 5px;
+  }
+  
+  .product-table tbody tr td i:hover {
+	color: #2563eb;
+  }
+  
+  /* Pagination Styling */
+  .table-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10px;
+  }
+  
+  .pagination {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+  }
+  
+  .btn-pagination,
+  .btn-page {
+	padding: 5px 10px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	background-color: #f9f9f9;
+	cursor: pointer;
+  }
+  
+  .btn-pagination:hover,
+  .btn-page:hover {
+	background-color: #f1f1f1;
+  }
+  
+  .btn-page.active {
+	background-color: #2563eb;
+	color: white;
+	border: none;
+  }
+  
+  /*Css modal for add product pop up ni ah*/
+/* Modal Background */
+.modal-bg {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+  }
+  
+  /* Modal Content (Horizontal Layout) */
+  .modal-content-horizontal {
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	padding: 30px;
+	border-radius: 10px;
+	max-width: 800px;
+	width: 90%;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Modal Header */
+  .modal-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 20px;
+  }
+  
+  .modal-header h2 {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #333;
+  }
+  
+  .close-btn {
+	cursor: pointer;
+	font-size: 1.5rem;
+  }
+  
+  /* Form Layout */
+  .add-product-form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	width: 100%;
+  }
+  
+  .form-fields {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	width: 100%;
+  }
+  
+  /* Individual Input Fields */
+  .input-group {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+  }
+  
+  .input-group input,
+  .input-group select,
+  .input-group textarea {
+	padding: 8px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	width: 100%;
+  }
+  
+  .input-group label {
+	font-weight: 600;
+	margin-bottom: 5px;
+  }
+  
+  textarea {
+	resize: vertical;
+	height: 80px;
+  }
+  
+  /* Button Group Styling */
+  .form-actions {
+	grid-column: span 2;
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: 20px;
+  }
+  
+  .btn-add {
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	padding: 10px 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 48%;
+	text-align: center;
+  }
+  
+  .btn-add:hover {
+	background-color: #45a049;
+  }
+  
+  .btn-cancel {
+	background-color: #d32626;
+	color: white;
+	border: none;
+	padding: 10px 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 48%;
+	text-align: center;
+  }
+  
+  .btn-cancel:hover {
+	background-color: #eb4949;
+  }
+  
+  /* Adjust spacing for better alignment */
+  .modal-content-horizontal .form-fields > div {
+	display: flex;
+	flex-direction: column;
+  }
+  
+  
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+	#content {
+		position: relative;
+		width: calc(100% - 60px);
+		transition: all .3s ease;
+	}
+	nav .nav-link,
+	nav .divider {
+		display: none;
+	}
+}
