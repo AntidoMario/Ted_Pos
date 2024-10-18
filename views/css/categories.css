@@ -1,0 +1,195 @@
+ /*CSS sa categories ni ah*/
+ /* Main container that holds the entire form and list sections side by side */
+ .container {
+	display: flex; /* Flexbox layout for responsive positioning */
+	justify-content: space-between; /* Space between form and list */
+	gap: 20px; /* Spacing between the two sections */
+	padding: 20px; /* Padding around the container */
+	flex-wrap: wrap; /* Ensure layout wraps on smaller screens */
+}
+
+/* Container for category form and list sections */
+.category-section {
+	display: flex; /* Flexbox layout for splitting form and list */
+	gap: 40px; /* Space between form and list sections */
+	width: 100%; /* Full width of the container */
+	flex-wrap: wrap; /* Wrap on smaller screens */
+}
+
+/* Styles for the category form (left side) */
+.category-form {
+	flex: 1; /* Takes equal space alongside category list */
+	background-color: #f9fafb; /* Light background for modern look */
+	padding: 24px; /* Inner padding around form elements */
+	border-radius: 12px; /* Smooth rounded corners */
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05); /* Softer shadow for depth */
+	border: 1px solid #e5e7eb; /* Subtle border */
+}
+
+/* Styles for the category list (right side) */
+.category-list {
+	flex: 1; /* Takes equal space alongside category form */
+	background-color: #f9fafb; /* Light background for list */
+	padding: 24px; /* Inner padding around list elements */
+	border-radius: 12px; /* Smooth rounded corners */
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05); /* Softer shadow for depth */
+	border: 1px solid #e5e7eb; /* Subtle border */
+}
+
+/* Heading styles for both form and list sections */
+.category-form h3,
+.category-list h3 {
+	margin-bottom: 16px; /* Space below heading */
+	font-size: 1.75rem; /* Modern, larger font size */
+	color: #111827; /* Darker heading color */
+	font-weight: 600; /* Semi-bold for better readability */
+}
+
+/* Form structure, makes it vertical with gaps between elements */
+form {
+	display: flex; /* Flexbox layout */
+	flex-direction: column; /* Vertical column layout */
+	gap: 16px; /* Space between form fields */
+}
+
+/* Label styling for form inputs */
+label {
+	font-weight: 500; /* Slightly bold labels */
+	font-size: 1rem; /* Modern font size */
+	color: #374151; /* Darker label color */
+	margin-bottom: 6px; /* Space below the label */
+}
+
+/* General styling for all input fields and textareas */
+input,
+textarea,
+select {
+	padding: 12px; /* Increase padding for better UI */
+	border: 1px solid #d1d5db; /* Lighter gray border */
+	border-radius: 6px; /* Smooth rounding of corners */
+	width: 100%; /* Full width of container */
+	font-size: 1rem; /* Modern font size */
+	color: #111827; /* Darker text color */
+	background-color: #fff; /* White background */
+	transition: border-color 0.3s ease; /* Smooth transition on hover */
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+	border-color: #2563eb; /* Blue border on focus */
+	outline: none; /* Remove default outline */
+}
+
+/* Button container to align buttons side by side */
+.form-buttons {
+	display: flex; /* Flexbox layout for button alignment */
+	justify-content: flex-end; /* Align buttons to the right */
+	gap: 10px; /* Space between buttons */
+	margin-top: 20px; /* Space above buttons */
+}
+
+/* General button styling */
+.btn {
+	padding: 10px 24px; /* Padding inside buttons */
+	border: none; /* No border around buttons */
+	border-radius: 6px; /* Smooth, modern rounded button corners */
+	cursor: pointer; /* Pointer cursor on hover */
+	font-size: 1rem; /* Modern button font size */
+	transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Save button (green) styling */
+.btn-save {
+	background-color: #22c55e; /* Modern green background */
+	color: #fff; /* White text */
+}
+
+.btn-save:hover {
+	background-color: #16a34a; /* Darker green on hover */
+	box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2); /* Subtle shadow on hover */
+}
+
+/* Cancel button (red) styling */
+.btn-cancel {
+	background-color: #f87171; /* Modern red background */
+	color: #fff; /* White text */
+}
+
+.btn-cancel:hover {
+	background-color: #ef4444; /* Darker red on hover */
+	box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2); /* Subtle shadow on hover */
+}
+
+/* Container for list options (entries dropdown and search input) */
+.list-options {
+	display: flex; /* Flexbox layout for aligning elements */
+	align-items: center; /* Vertically center the elements */
+	gap: 10px; /* Space between dropdown, entries label, and search */
+	margin-bottom: 20px; /* Space below list options */
+}
+
+/* Styling for the search input box */
+.search-input {
+	padding: 10px; /* Inner padding */
+	border: 1px solid #d1d5db; /* Lighter gray border */
+	border-radius: 6px; /* Rounded corners */
+	width: 250px; /* Increased width for better usability */
+	font-size: 1rem; /* Modern font size */
+	color: #111827; /* Darker text color */
+}
+
+.search-input:focus {
+	border-color: #2563eb; /* Blue border on focus */
+	outline: none; /* Remove default outline */
+}
+
+/* Table styling for category list */
+.table {
+	width: 100%; /* Full width table */
+	border-collapse: collapse; /* Remove gaps between cells */
+}
+
+/* Table header and cell styling */
+.table th,
+.table td {
+	padding: 14px; /* Increased padding for better readability */
+	text-align: left; /* Align text to the left */
+	border-bottom: 1px solid #e5e7eb; /* Light border below rows */
+	font-size: 1rem; /* Modern font size */
+	color: #374151; /* Darker text color */
+}
+
+/* Table row hover effect */
+.table tr:hover {
+	background-color: #f3f4f6; /* Light background on hover */
+}
+
+/* General button icon styling */
+.btn-icon {
+	background: none; /* No background */
+	border: none; /* No border */
+	cursor: pointer; /* Pointer cursor on hover */
+	padding: 6px; /* Small padding */
+	font-size: 1.4rem; /* Slightly larger icon size */
+	transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Edit button (icon) */
+.btn-edit i {
+	color: #22c55e; /* Modern green icon for edit */
+}
+
+.btn-edit:hover i {
+	color: #16a34a; /* Darker green on hover */
+}
+
+/* Delete button (icon) */
+.btn-delete i {
+	color: #f87171; /* Modern red icon for delete */
+}
+
+.btn-delete:hover i {
+	color: #ef4444; /* Darker red on hover */
+}
+  /*Categories CSS ends here*/

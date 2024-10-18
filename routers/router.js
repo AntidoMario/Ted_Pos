@@ -1,46 +1,48 @@
-// routers/router.js
-
 const express = require("express");
 const path = require("path");
 const { login } = require("../controllers/authController");
 
 const routes = express.Router();
 
-// Serve index.html at the /login route
+// Serve index.ejs at the /login route
 routes.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/index.html'));
+  res.render("index"); // No need for file extension if you're using EJS
 });
 
-// Serve the dashboard page after successful login
+// Serve dashboard.ejs after successful login
 routes.get("/dashboard", (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/dashboard.html'));
+  res.render("dashboard");
 });
 
-// Serve orders.html at the /orders route
+// Serve orders.ejs at the /orders route
 routes.get("/orders", (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/orders.html'));
+  res.render("orders");
 });
 
-// Serve takeorders.html at the /takeorders route
+// Serve takeorders.ejs at the /takeorders route
 routes.get("/takeorders", (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/takeorders.html'));
+  res.render("takeorders");
 });
 
-// Serve categories.html at the /categories route
+// Serve categories.ejs at the /categories route
 routes.get("/categories", (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/categories.html'));
+  res.render("categories");
 });
 
-// Serve products.html at the /categories route
+// Serve products.ejs at the /products route
 routes.get("/products", (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/products.html'));
+  res.render("products");
 });
 
-// Serve products.html at the /categories route
+// Serve user.ejs at the /users route
 routes.get("/users", (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/user.html'));
+  res.render("user");
 });
 
+// Serve bundles.ejs at the /bundles route
+routes.get("/bundles", (req, res) => {
+  res.render("bundles");
+});
 
 // Login route
 routes.post("/login", login);
