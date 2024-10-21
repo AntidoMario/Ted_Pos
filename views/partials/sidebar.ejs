@@ -7,7 +7,7 @@
       href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
     <title>Dashboard</title>
   </head>
   <body>
@@ -32,7 +32,7 @@
 
         <li class="divider" data-text="Management">Management</li>
         <li>
-          <a href="#"><i class="bx bxs-truck icon"></i> Supplier</a>
+          <a href="/suppliers"><i class="bx bxs-truck icon"></i> Supplier</a>
         </li>
         <li>
           <a href="/categories"><i class="bx bxs-folder icon"></i> Categories</a>
@@ -81,5 +81,20 @@
       <!-- NAVBAR -->
     </section>
     <!-- NAVBAR -->
+
+     <script>
+      // JavaScript for active menu item
+      const menuItems = document.querySelectorAll('#sidebar .side-menu a');
+  
+      menuItems.forEach(item => {
+        item.addEventListener('click', function () {
+          // Remove active class from all menu items
+          menuItems.forEach(i => i.classList.remove('active'));
+  
+          // Add active class to the clicked menu item
+          this.classList.add('active');
+        });
+      });
+    </script>
   </body>
 </html>

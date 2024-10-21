@@ -130,10 +130,8 @@
 
                 <div class="input-group">
                   <label for="product-model">Product Model</label>
-                  <select id="product-model">
-                    <option value="1">Model 1</option>
-                    <option value="2">Model 2</option>
-                  </select>
+                  <input id="product-model">
+                  </input>
                 </div>
 
                 <div class="input-group">
@@ -178,85 +176,10 @@
         </div>
       </main>
 
-      <script>
-        const openPopup = document.getElementById("open-popup");
-        const closePopup = document.getElementById("close-popup");
-        const modal = document.getElementById("add-product-modal");
-        const cancelBtn = document.getElementById("cancel-btn");
-
-        openPopup.addEventListener("click", () => {
-          modal.style.display = "flex";
-        });
-
-        closePopup.addEventListener("click", () => {
-          modal.style.display = "none";
-        });
-
-        cancelBtn.addEventListener("click", () => {
-          modal.style.display = "none";
-        });
-
-        window.addEventListener("click", (event) => {
-          if (event.target == modal) {
-            modal.style.display = "none";
-          }
-        });
-
-        // Get all edit buttons
-        const editButtons = document.querySelectorAll(".bx-edit");
-
-        // Loop through all edit buttons and add event listeners
-        editButtons.forEach((button, index) => {
-          button.addEventListener("click", (event) => {
-            // Open modal
-            modal.style.display = "flex";
-
-            // Change modal title and button text to "Edit Product"
-            document.querySelector(".modal-header h2").innerHTML =
-              '<i class="bx bx-edit"></i> Edit Product';
-            document.querySelector(".btn-add").textContent = "Save Changes";
-
-            // Here you should get the relevant product data, e.g., from a row or an API
-            const productRow = event.target.closest("tr"); // Get the parent row of the clicked button
-            const productData = {
-              category: productRow.cells[1].textContent,
-              name: productRow.cells[2].textContent,
-              model: productRow.cells[3].textContent,
-              price: productRow.cells[4].textContent,
-              quantity: productRow.cells[5].textContent,
-            };
-
-            // Populate the form fields with existing product data
-            document.getElementById("category").value = productData.category;
-            document.getElementById("product-name").value = productData.name;
-            document.getElementById("product-model").value = productData.model;
-            document.getElementById("price").value = productData.price;
-            document.getElementById("quantity").value = productData.quantity;
-
-            // If necessary, populate the description or any additional fields
-            // document.getElementById("description").value = productData.description;
-          });
-        });
-
-        // Reset form and modal content when the Add button is clicked
-        openPopup.addEventListener("click", () => {
-          modal.style.display = "flex";
-
-          // Change modal title and button text back to "Add Product"
-          document.querySelector(".modal-header h2").innerHTML =
-            '<i class="bx bx-plus"></i> Add Product';
-          document.querySelector(".btn-add").textContent = "Add";
-
-          // Clear form fields
-          document.querySelector(".add-product-form").reset();
-        });
-      </script>
-
       <!-- MAIN -->
-    </section>
     <!-- NAVBAR -->
 
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="/js/dashboard.js"></script>
+    <script src="/js/productModal.js"></script>
   </body>
 </html>

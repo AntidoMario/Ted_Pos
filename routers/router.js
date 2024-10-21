@@ -44,6 +44,11 @@ routes.get("/bundles", (req, res) => {
   res.render("bundles");
 });
 
+// Serve bundles.ejs at the /bundles route
+routes.get("/suppliers", (req, res) => {
+  res.render("suppliers");
+});
+
 // Login route
 routes.post("/login", login);
 

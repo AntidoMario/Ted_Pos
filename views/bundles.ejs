@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/css/bundle.css" />
-    <title>Dashboard</title>
+    <title>TedPos</title>
   </head>
   <body>
     <%- include('partials/sidebar') %>
@@ -31,6 +31,7 @@
 
           <div class="search-box">
             <input type="text" placeholder="Search" />
+            <i class="bx bx-search"></i>
           </div>
         </div>
 
@@ -96,35 +97,35 @@
       </div>
     </main>
 
-    <!-- Add Bundle Modal -->
+ <!-- Modal HTML -->
 <div id="add-bundle-modal" class="modal hidden">
   <div class="modal-content">
     <span class="close-btn">&times;</span>
     <h3>Add Bundles Form</h3>
     <form id="add-bundle-form">
-      <label for="bundle-name">Bundle Names</label>
+      <!-- Bundle Name Input -->
+      <label for="bundle-name">Bundle Name</label>
       <input type="text" id="bundle-name" placeholder="Bundle Name" required />
 
-      <label for="select-product">Select Product</label>
+     <!-- Select Product with Search -->
+<label for="select-product">Select Product</label>
 <div id="select-product" class="multi-select">
   <div class="select-box" id="select-box">
     <span>Select Product</span>
     <i class='bx bx-chevron-down'></i>
   </div>
   <div class="checkbox-dropdown hidden">
-    <label>
-      <input type="checkbox" value="Product 1" /> Product 1
-    </label>
-    <label>
-      <input type="checkbox" value="Product 2" /> Product 2
-    </label>
-    <label>
-      <input type="checkbox" value="Product 3" /> Product 3
-    </label>
+    <!-- Add Search Input Field -->
+    <input type="text" id="search-input" placeholder="Search Product" />
+    <div id="product-list">
+      <label><input type="checkbox" value="Product 1" /> Product 1</label>
+      <label><input type="checkbox" value="Product 2" /> Product 2</label>
+      <label><input type="checkbox" value="Product 3" /> Product 3</label>
+    </div>
   </div>
 </div>
 
-
+      <!-- Other Inputs and Form Buttons -->
       <label for="bundle-price">Bundle Price</label>
       <input type="number" id="bundle-price" placeholder="1000" required />
 
@@ -132,7 +133,7 @@
       <textarea id="bundle-description" placeholder="Bundle Description"></textarea>
 
       <label for="product-discount">Product Discount</label>
-      <input type="number" id="product-discount" placeholder="123" />
+      <input type="number" id="product-discount" placeholder="%" /> 
 
       <div class="form-actions">
         <button type="submit" class="add-btn">Add</button>
@@ -141,7 +142,6 @@
     </form>
   </div>
 </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="/js/dashboard.js"></script>

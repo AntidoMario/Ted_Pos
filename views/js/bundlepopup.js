@@ -27,16 +27,18 @@ window.addEventListener("click", (e) => {
   }
 });
 
-// New Multi-Select Dropdown Logic
-
+// Get the necessary elements
 const selectBox = document.getElementById('select-box');
 const dropdown = document.querySelector('.checkbox-dropdown');
-const checkboxes = document.querySelectorAll('.checkbox-dropdown input');
+const checkboxes = document.querySelectorAll('.checkbox-dropdown input[type="checkbox"]');
 const displaySpan = selectBox.querySelector('span');
+const searchInput = document.getElementById('search-input');
+const productList = document.getElementById('product-list');
 
+// Toggle dropdown visibility when the select box is clicked
 selectBox.addEventListener('click', () => {
   dropdown.classList.toggle('hidden');
-  selectBox.classList.toggle('active');
+  selectBox.classList.toggle('active');  // Add active state for styling if needed
 });
 
 // Handle checkbox selection
@@ -45,10 +47,25 @@ checkboxes.forEach((checkbox) => {
     const selectedProducts = Array.from(checkboxes)
       .filter(checkbox => checkbox.checked)
       .map(checkbox => checkbox.value);
-    
+
     displaySpan.textContent = selectedProducts.length > 0 
       ? selectedProducts.join(', ') 
       : 'Select Product';
+  });
+});
+
+// Search functionality to filter products
+searchInput.addEventListener('input', () => {
+  const filter = searchInput.value.toLowerCase();
+  const labels = productList.querySelectorAll('label');
+
+  labels.forEach(label => {
+    const product = label.textContent.toLowerCase();
+    if (product.includes(filter)) {
+      label.style.display = '';
+    } else {
+      label.style.display = 'none';
+    }
   });
 });
 
@@ -59,3 +76,11 @@ window.addEventListener('click', (e) => {
     selectBox.classList.remove('active');
   }
 });
+
+selectBox.addEventListener('click', () => {
+  console.log('Select box clicked');
+  dropdown.classList.toggle('hidden');
+});
+
+
+

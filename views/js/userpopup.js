@@ -3,43 +3,31 @@ document.addEventListener("DOMContentLoaded", function () {
     const newUserModal = document.getElementById("newUserModal");
     const editUserModal = document.getElementById("editUserModal");
 
-    newUserModal.style.display = "none";
-    editUserModal.style.display = "none";
+    // Hide modals by default
+    hideModal(newUserModal);
+    hideModal(editUserModal);
 
     // Get the button that opens the new user modal
     const newUserBtn = document.querySelector(".new-user-btn");
 
-    // Get the <span> element that closes the modal for both new user and edit user modals
+    // Get the close and cancel buttons for both modals
     const closeBtns = document.querySelectorAll(".close");
-
-    // Get the cancel buttons for both modals
     const cancelBtns = document.querySelectorAll(".cancel-btn");
 
-    // When the user clicks the new user button, open the new user modal
+    // Open the new user modal
     newUserBtn.onclick = function () {
-        newUserModal.style.display = "flex"; // Display the modal when the button is clicked
+        showModal(newUserModal);
     };
 
-    // Close modals when clicking on <span> (x) or cancel buttons
-    closeBtns.forEach((span) => {
-        span.onclick = function () {
-            newUserModal.style.display = "none"; // Hide new user modal
-            editUserModal.style.display = "none"; // Hide edit user modal
-        };
-    });
-
-    cancelBtns.forEach((btn) => {
-        btn.onclick = function () {
-            newUserModal.style.display = "none"; // Hide new user modal
-            editUserModal.style.display = "none"; // Hide edit user modal
-        };
-    });
+    // Close modals when clicking on close (x) or cancel buttons
+    closeBtns.forEach(btn => btn.onclick = closeModalHandler);
+    cancelBtns.forEach(btn => btn.onclick = closeModalHandler);
 
     // Close the modal when clicking outside of it
     window.onclick = function (event) {
-        if (event.target == newUserModal || event.target == editUserModal) {
-            newUserModal.style.display = "none";
-            editUserModal.style.display = "none";
+        if (event.target === newUserModal || event.target === editUserModal) {
+            hideModal(newUserModal);
+            hideModal(editUserModal);
         }
     };
 
@@ -59,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('editUserType').value = userType;
 
             // Open edit modal
-            editUserModal.style.display = 'flex'; // Use 'flex' for proper display
+            showModal(editUserModal);
         });
     });
 
@@ -76,10 +64,28 @@ document.addEventListener("DOMContentLoaded", function () {
             userType: document.getElementById('editUserType').value
         };
 
-        // Handle form submission logic (e.g., via AJAX or form submission)
+        // Handle form submission logic (e.g., via AJAX or fetch request)
         console.log('Updated user data:', data);
 
         // Close the modal after submission
-        editUserModal.style.display = 'none';
+        hideModal(editUserModal);
     };
+
+    // Helper function to show a modal
+    function showModal(modal) {
+        modal.style.display = "flex";
+        modal.setAttribute("aria-hidden", "false");
+    }
+
+    // Helper function to hide a modal
+    function hideModal(modal) {
+        modal.style.display = "none";
+        modal.setAttribute("aria-hidden", "true");
+    }
+
+    // General function to close modals
+    function closeModalHandler() {
+        hideModal(newUserModal);
+        hideModal(editUserModal);
+    }
 });
